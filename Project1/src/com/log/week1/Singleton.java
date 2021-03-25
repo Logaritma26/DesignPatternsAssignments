@@ -1,4 +1,4 @@
-package com.log;
+package com.log.week1;
 
 public class Singleton {
 

@@ -1,4 +1,4 @@
-package com.log.FactoryService;
+package com.log.week1.FactoryService;
 
 public class SmallEnginePlane implements Plane{
 

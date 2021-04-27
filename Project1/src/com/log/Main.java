@@ -15,6 +15,9 @@ import com.log.week3.iterator.OrderLister;
 import com.log.week3.template.OrderTemplate1;
 import com.log.week3.template.OrderTemplate2;
 import com.log.week3.template.TicketProcessTemplate;
+import com.log.week4.Employee;
+import com.log.week4.EmployeeController;
+import com.log.week4.EmployeeView;
 
 public class Main {
 
@@ -24,9 +27,10 @@ public class Main {
         //factoryPattern();
         //adapterPattern();
         //facadePattern();
-
         //iteratorPattern();
         //templatePattern();
+
+        MVCPattern();
     }
 
 
@@ -38,7 +42,6 @@ public class Main {
         Singleton singleton2 = Singleton.getInstance();
         System.out.println(singleton2.foo);
     }
-
     public static void factoryPattern(){
         PlaneFactory planeFactory = new PlaneFactory();
 
@@ -51,7 +54,6 @@ public class Main {
         Plane plane3 = planeFactory.createPlane(Type.BIG);
         System.out.println(plane3.getMPH());
     }
-
     public static void adapterPattern(){
         EUSocket euSocket = new EUSocket();
         USSocket usSocket = new USSocket();
@@ -77,12 +79,10 @@ public class Main {
 
         usSocket.plugIn(adapter);
     }
-
     public static void facadePattern(){
         MovieTheater movieTheater = new MovieTheater();
         movieTheater.startMovie();
     }
-
     public static void iteratorPattern(){
 
         OrderCollection orderCollection = new OrderCollection();
@@ -94,7 +94,6 @@ public class Main {
         OrderLister orderLister = new OrderLister(orderCollection);
         orderLister.printMyOrders();
     }
-
     public static void templatePattern(){
 
         TicketProcessTemplate order1 = new OrderTemplate1();
@@ -105,5 +104,28 @@ public class Main {
         order2.processOrder();
         System.out.println();
     }
+    public static void MVCPattern(){
+
+        // Create environment for the design
+        Employee employee1 = new Employee(1, 2000);
+        Employee employee2 = new Employee(2, 2000);
+        Employee employee3 = new Employee(3, 2000);
+        Employee employee4 = new Employee(4, 2000);
+        EmployeeView view = new EmployeeView();
+
+        EmployeeController controller = new EmployeeController(view, employee1, employee2);
+
+
+
+        controller.printInfo();
+
+        controller.printInfo(employee4);
+
+        controller.addEmployeeToSystem(employee3);
+        controller.printInfo();
+
+        controller.promoteEmployee(employee2);
+    }
+
 
 }
